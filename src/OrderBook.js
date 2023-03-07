@@ -17,14 +17,14 @@ function OrderBook() {
     freq: 'F0'
   }), [precision]);
 
-  const increasePrecision = () => {
+  const decreasePrecision = () => {
     const newValue = precision + 1;
     if (precisionValues[newValue]) {
       setPrecision(newValue);
     }
   }
 
-  const decreasePrecision = () => {
+  const increasePrecision = () => {
     const newValue = precision - 1;
     if (precisionValues[newValue]) {
       setPrecision(newValue);
@@ -77,8 +77,8 @@ function OrderBook() {
       <div className="mb-5">
         <h4>Precision</h4>
         <div className="btn-group btn-group-sm" role="group">
-          <button type="button" className="btn btn-primary" onClick={(e) => increasePrecision() }>+</button>
-          <button type="button" className="btn btn-primary" onClick={(e) => decreasePrecision() }>-</button>
+          <button type="button" className="btn btn-primary" onClick={(e) => increasePrecision() } disabled={precision === 0}>+</button>
+          <button type="button" className="btn btn-primary" onClick={(e) => decreasePrecision() } disabled={precision === precisionValues.length - 1}>-</button>
         </div>
       </div>
       <div className="tableContainer">
